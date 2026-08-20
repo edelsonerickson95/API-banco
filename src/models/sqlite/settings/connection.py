@@ -8,13 +8,13 @@ class DBConnectionHandler:
     """Classe responsável por gerenciar a conexão com o banco de dados SQLite."""
 
     def __init__(self):
-        self.__connection = "sqlite:///storage.db"
+        self.__connection_string = "sqlite:///storage.db"
         self.__engine = None
         self.session = None
 
     def connect_to_db(self):
         """Estabelece a conexão com o banco de dados SQLite."""
-        self.__engine = create_engine(self.__connection)
+        self.__engine = create_engine(self.__connection_string)
 
     def get_engine(self):
         """Retorna o objeto engine do SQLAlchemy."""
