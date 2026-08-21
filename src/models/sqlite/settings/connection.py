@@ -26,9 +26,9 @@ class DBConnectionHandler:
         self.session = session_maker(bind=self.__engine)
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
-        """Método chamado ao sair do contexto do gerenciador de contexto."""
+    def __exit__(self, exc_type, exc, tb):
         self.session.close()
+
 
 
 db_connection_handler = DBConnectionHandler()

@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from src.models.sqlite.entities.pessoa_fisica import PessoaFisicaTable
 
 
-class PessoaFisicaRepositoryInterface(ABC):
+class PeopleRepository(ABC):
     """Interface para o repositório de pessoas físicas."""
 
     @abstractmethod

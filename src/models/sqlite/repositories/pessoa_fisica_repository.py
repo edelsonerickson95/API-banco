@@ -4,11 +4,11 @@ para interagir com o banco de dados SQLite."""
 from sqlalchemy.orm.exc import NoResultFound
 from src.models.sqlite.entities.pessoa_fisica import PessoaFisicaTable
 from src.models.sqlite.interfaces.pessoa_fisica_repository import (
-    PessoaFisicaRepositoryInterface,
+    PeopleRepository,
 )
 
 
-class PessoaFisicaRepository(PessoaFisicaRepositoryInterface):
+class PessoaFisicaRepository(PeopleRepository):
     """Implementação do repositório de pessoas físicas usando SQLAlchemy ORM
     para interagir com o banco de dados SQLite."""
 
@@ -26,7 +26,7 @@ class PessoaFisicaRepository(PessoaFisicaRepositoryInterface):
         categoria: str,
         saldo: float
     ) -> None:
-        with self.db_connection() as database:
+        with self.db_connection as database:
             try:
                 person = PessoaFisicaTable(
                     renda_mensal=renda_mensal,
@@ -34,7 +34,7 @@ class PessoaFisicaRepository(PessoaFisicaRepositoryInterface):
                     nome_completo=nome_completo,
                     celular=celular,
                     email=email,
-                    categoria_id=categoria,
+                    categoria=categoria,
                     saldo=saldo,
                 )
                 database.session.add(person)
